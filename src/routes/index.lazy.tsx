@@ -56,6 +56,7 @@ function Index() {
             <Input isReadOnly type="text" label="2Ward" value={my2Store.info.home.address.main.ward} />
           </div>
         </div>
+        <LayoutCategory />
         <PagesIndexHomeContent stateA="ss" my2Store={my2Store} />
       </div>
     </DefaultLayout>

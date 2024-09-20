@@ -33,6 +33,9 @@
     "LayoutsAboutLayout": true,
     "PagesIndexContent": true,
     "PagesIndexHomeContent": true,
-    "useMyStore": true
+    "useMyStore": true,
+    "LayoutCategory": true,
+    "LayoutCategoryItem": true,
+    "LayoutCategoryWrapper": true
   }
 }

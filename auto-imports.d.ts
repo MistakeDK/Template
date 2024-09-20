@@ -8,6 +8,9 @@ export {}
 declare global {
   const AboutLayout: typeof import('./src/layouts/AboutLayout')['AboutLayout']
   const DefaultLayout: typeof import('./src/layouts/DefaultLayout')['DefaultLayout']
+  const LayoutCategory: typeof import('@/components/layout/Category.tsx')['Category']
+  const LayoutCategoryItem: typeof import('@/components/layout/CategoryItem.tsx')['CategoryItem']
+  const LayoutCategoryWrapper: typeof import('@/components/layout/CategoryWrapper.tsx')['CategoryWrapper']
   const LayoutsAboutLayout: typeof import('@/layouts/AboutLayout.tsx')['AboutLayout']
   const LayoutsDefaultLayout: typeof import('@/layouts/DefaultLayout.tsx')['DefaultLayout']
   const Navbar: typeof import('./src/components/Navbar')['Navbar']
