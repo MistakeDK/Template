@@ -1,0 +1,15 @@
+{
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "printWidth": 120,
+    "cssDeclarationSorterOrder": "concentric-css",
+    "cssDeclarationSorterKeepOverrides": false,
+    "plugins": [
+        "prettier-plugin-tailwindcss",
+        "prettier-plugin-packagejson",
+        "prettier-plugin-organize-imports",
+        "prettier-plugin-css-order"
+    ]
+}
