@@ -1,18 +1,23 @@
 import { Button } from "@nextui-org/react";
 import { ReactNode } from "@tanstack/react-router";
-import React from "react";
 
 export interface categoryState{
     icon?:ReactNode,
     title:string,
-    btnGroup:Array<React.ReactElement<typeof Button>>
+    btnGroup:Array<IbtnGroup>
     id:number,
     url:string
 }
-export interface categoryItemState{
+export interface IbtnGroup{
+    btnName:string,
     icon?:ReactNode,
-    title:string,
-    btnGroup:Array<React.ReactElement<typeof Button>>
+    info?:string
+    onClick:(evt:React.MouseEvent<HTMLButtonElement>,info:string)=>void
+}
+export interface categoryItemState{
+    iconItem?:ReactNode,
+    titleItem:string,
+    btnGroupItem:Array<React.ReactElement<typeof Button>>
 }
 export interface viewState{
     categoryOpen:Array<number>,

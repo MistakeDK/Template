@@ -9,11 +9,11 @@ export const CategoryItem = ({ categoryItem }: prop) => {
     <>
       <div className="flex pl-4 space-x-2 justify-between">
         <div>
-          <span>{categoryItem.icon}</span>
-          <span>{categoryItem.title}</span>
+          <span>{categoryItem.iconItem}</span>
+          <span>{categoryItem.titleItem}</span>
         </div>
         <div className="px-2 space-x-2">
-          {categoryItem.btnGroup.map((item) => {
+          {categoryItem.btnGroupItem.map((item) => {
             return item;
           })}
         </div>

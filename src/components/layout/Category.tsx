@@ -6,21 +6,22 @@ interface prop {
 }
 
 export const Category = ({ category }: prop) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { btnGroup, index, title, url, icon } = category;
-  const arr: Array<categoryItemState> = [
-    {
-      title: "item 1",
-      icon: <span></span>,
-      btnGroup: [<>1</>, <>2</>]
-    },
-    {
-      title: "item 2",
-      icon: <span></span>,
-      btnGroup: [<>3</>, <>4</>]
-    }
-  ];
-  //call api here
+  const [isOpen, setIsOpen] = useState(false);
+  const [categoryItemState, setCategoryItemState] = useState<categoryItemState[]>([]);
+  useEffect(() => {
+    setCategoryItemState([
+      {
+        titleItem: "item 1",
+        iconItem: <span></span>,
+        btnGroupItem: [<>1</>, <>2</>]
+      },
+      {
+        titleItem: "item 2",
+        iconItem: <span></span>,
+        btnGroupItem: [<>3</>, <>4</>]
+      }
+    ]);
+  }, []);
   return (
     <>
       <div className="bg-red-600  px-2 flex justify-between">
@@ -30,16 +31,16 @@ export const Category = ({ category }: prop) => {
               setIsOpen(!isOpen);
             }}
           >
-            {icon}
+            {category.icon}
           </button>
-          <span>{title}</span>
+          {/* <span>{category.title}</span> */}
         </div>
         <div className="space-x-2">
-          {/* @ts-ignore */}
-          {btnGroup.map((item: any) => (
+          {category.btnGroup.map((item) => (
             <button
+              key={item.btnName}
               onClick={(evt) => {
-                item.editOnClick(evt, "mybutton");
+                item.onClick(evt, item.info as string);
               }}
             >
               {item.btnName}
@@ -48,7 +49,7 @@ export const Category = ({ category }: prop) => {
         </div>
       </div>
       <RenderIf condition={isOpen}>
-        {arr.map((item) => {
+        {categoryItemState.map((item) => {
           return <CategoryItem categoryItem={item} />;
         })}
       </RenderIf>
