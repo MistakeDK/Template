@@ -1,3 +1,4 @@
+import { TabWrapper } from './TabWrapper';
 import { Button } from "@nextui-org/react";
 import { ReactNode } from "@tanstack/react-router";
 
@@ -24,4 +25,8 @@ export interface viewState{
     removeId:(index:number)=>void,
     pushId:(index:number)=>void,
     removeAll:()=>void
+}
+export interface tabWrapperState{
+    title:string,
+    key:string
 }

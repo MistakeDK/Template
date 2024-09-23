@@ -39,6 +39,7 @@
     "LayoutCategory": true,
     "fetchFake": true,
     "fetchFakeArrCategory": true,
-    "fetchFakeArrCategoryItem": true
+    "fetchFakeArrCategoryItem": true,
+    "LayoutTabWrapper": true
   }
 }

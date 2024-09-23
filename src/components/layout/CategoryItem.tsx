@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
 import { categoryItemState } from "./ILayout";
 
 interface prop {
@@ -18,9 +18,9 @@ export const CategoryItem = ({ categoryItem }: prop) => {
           {btnGroupItem.map((item) => {
             return (
               <>
-                <Button size="sm" onClick={(evt) => item.onClick(evt, { test: "abc" })}>
+                <ButtonVariant size="xss" isIconOnly onClick={(evt) => item.onClick(evt, { test: "abc" })}>
                   {item.icon}
-                </Button>
+                </ButtonVariant>
               </>
             );
           })}

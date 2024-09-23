@@ -1,5 +1,5 @@
-import { Button } from "@nextui-org/react";
 import { motion, Variants } from "framer-motion";
+import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
 import { RenderIf } from "../../util/RenderIf";
 import { CategoryItem } from "./CategoryItem";
 import { categoryItemState, categoryState } from "./ILayout";
@@ -35,7 +35,7 @@ export const Category = ({ category }: prop) => {
   };
   return (
     <>
-      <div className="bg-red-600 p-2 flex justify-between" onClick={() => setIsOpen(!isOpen)}>
+      <div className="bg-red-600 p-2 w-full flex justify-between" onClick={() => setIsOpen(!isOpen)}>
         <div className="space-x-2 flex items-center">
           {icon}
           {title}
@@ -44,7 +44,7 @@ export const Category = ({ category }: prop) => {
           {btnGroup.map((item) => {
             return (
               <>
-                <Button
+                <ButtonVariant
                   isIconOnly
                   onClick={(evt) => {
                     evt.stopPropagation();
@@ -52,7 +52,7 @@ export const Category = ({ category }: prop) => {
                   }}
                 >
                   {item.icon}
-                </Button>
+                </ButtonVariant>
               </>
             );
           })}

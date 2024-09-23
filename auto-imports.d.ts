@@ -11,6 +11,7 @@ declare global {
   const LayoutCategory: typeof import('@/components/layout/Category.tsx')['Category']
   const LayoutCategoryItem: typeof import('@/components/layout/CategoryItem.tsx')['CategoryItem']
   const LayoutCategoryWrapper: typeof import('@/components/layout/CategoryWrapper.tsx')['CategoryWrapper']
+  const LayoutTabWrapper: typeof import('@/components/layout/TabWrapper.tsx')['TabWrapper']
   const LayoutsAboutLayout: typeof import('@/layouts/AboutLayout.tsx')['AboutLayout']
   const LayoutsDefaultLayout: typeof import('@/layouts/DefaultLayout.tsx')['DefaultLayout']
   const Navbar: typeof import('./src/components/Navbar')['Navbar']
