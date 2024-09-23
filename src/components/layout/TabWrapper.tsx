@@ -58,27 +58,24 @@ export const TabWrapper = () => {
       tabCurent: arrayTab.slice(pre.tabLeft + 1, pre.tabRight + 1)
     }));
   };
-  console.log(state);
   return (
     <>
-      <div className="flex justify-between items-center">
-        <div className="w-1/6">
+      <div className="flex justify-between items-center relative">
+        <div className="">
           <RenderIf condition={state.tabLeft !== 0}>
             <ButtonVariant color="primary" onClick={onClickLeft} size="md">
               <HeartIcon />
             </ButtonVariant>
           </RenderIf>
         </div>
-
-        <div className="">
+        <div className="absolute left-32">
           <Tabs variant="underlined" color="default">
             {state.tabCurent.map((item) => {
               return <Tab key={item["key"]} title={item["title"]} />;
             })}
           </Tabs>
         </div>
-
-        <div className="w-1/6">
+        <div className="">
           <RenderIf condition={state.tabRight < arrayTab.length}>
             <ButtonVariant color="primary" onClick={onClickRight} size="md">
               <HeartIcon />
