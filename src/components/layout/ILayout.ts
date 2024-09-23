@@ -10,14 +10,14 @@ export interface categoryState{
 }
 export interface IbtnGroup{
     btnName:string,
-    icon?:ReactNode,
-    info?:string
-    onClick:(evt:React.MouseEvent<HTMLButtonElement>,info:string)=>void
+    icon?:React.ReactElement<typeof Button>,
+    info?:object,
+    onClick:(evt:React.MouseEvent<HTMLButtonElement>,info:object)=>void
 }
 export interface categoryItemState{
     iconItem?:ReactNode,
     titleItem:string,
-    btnGroupItem:Array<React.ReactElement<typeof Button>>
+    btnGroupItem:Array<IbtnGroup>
 }
 export interface viewState{
     categoryOpen:Array<number>,

@@ -1,4 +1,3 @@
-import React from "react";
 import { Category } from "./Category";
 import { categoryState } from "./ILayout";
 // const useViewState = create<viewState>((set)=>({
@@ -8,19 +7,14 @@ import { categoryState } from "./ILayout";
 //   removeIndex:()=>
 // }));
 export const CategoryWrapper = () => {
-  const editOnClick = (evt: React.MouseEvent<HTMLButtonElement>, info: string) => {
-    console.log("btn click info", info);
-  };
-  const arrCategory: Array<categoryState> = [
-    {
-      icon: <span>icon</span>,
-      title: "First",
-      btnGroup: [{ btnName: "edit", icon: <span>IconEdit</span>, onClick: editOnClick, info: "abv" }],
-      id: 1,
-      url: ""
-    }
-  ];
-  console.log(arrCategory);
+  const [arrCategory, setArrCategory] = useState<categoryState[]>([]);
+  useEffect(() => {
+    const callApi = async () => {
+      const data = await fetchFakeArrCategory();
+      setArrCategory(data as categoryState[]);
+    };
+    callApi();
+  }, []);
   //call Api here
   return (
     <div className="w-1/3">

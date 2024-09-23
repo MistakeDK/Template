@@ -34,8 +34,11 @@
     "PagesIndexContent": true,
     "PagesIndexHomeContent": true,
     "useMyStore": true,
-    "LayoutCategory": true,
     "LayoutCategoryItem": true,
-    "LayoutCategoryWrapper": true
+    "LayoutCategoryWrapper": true,
+    "LayoutCategory": true,
+    "fetchFake": true,
+    "fetchFakeArrCategory": true,
+    "fetchFakeArrCategoryItem": true
   }
 }
