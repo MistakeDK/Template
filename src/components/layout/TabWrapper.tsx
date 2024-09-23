@@ -60,22 +60,22 @@ export const TabWrapper = () => {
   };
   return (
     <>
-      <div className="flex justify-between items-center relative">
-        <div className="">
+      <div className="flex justify-between items-center ">
+        <div className="w-1/6">
           <RenderIf condition={state.tabLeft !== 0}>
             <ButtonVariant color="primary" onClick={onClickLeft} size="md">
               <HeartIcon />
             </ButtonVariant>
           </RenderIf>
         </div>
-        <div className="absolute left-32">
-          <Tabs variant="underlined" color="default">
+        <div className="">
+          <Tabs className="p-0" variant="underlined" color="default">
             {state.tabCurent.map((item) => {
-              return <Tab key={item["key"]} title={item["title"]} />;
+              return <Tab className="min-w-20" key={item["key"]} title={item["title"]} />;
             })}
           </Tabs>
         </div>
-        <div className="">
+        <div className="w-1/6">
           <RenderIf condition={state.tabRight < arrayTab.length}>
             <ButtonVariant color="primary" onClick={onClickRight} size="md">
               <HeartIcon />
