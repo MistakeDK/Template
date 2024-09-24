@@ -19,7 +19,7 @@ export const CategoryWrapper = () => {
   }, []);
   //call Api here
   return (
-    <div className="w-2/5 mt-2">
+    <div className="w-2/5 m-4">
       <TabWrapper />
       <SearchInput />
       {arrCategory.map((item) => {
