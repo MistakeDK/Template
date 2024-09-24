@@ -41,6 +41,7 @@
     "fetchFakeArrCategory": true,
     "fetchFakeArrCategoryItem": true,
     "LayoutTabWrapper": true,
-    "LayoutSearchInput": true
+    "LayoutSearchInput": true,
+    "LayoutExample": true
   }
 }

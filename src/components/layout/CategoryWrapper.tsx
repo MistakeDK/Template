@@ -1,7 +1,5 @@
 import { Category } from "./Category";
 import { categoryState } from "./ILayout";
-import { SearchInput } from "./SearchInput";
-import { TabWrapper } from "./TabWrapper";
 // const useViewState = create<viewState>((set)=>({
 //   categoryOpen:[],
 //   pushIndex:(index:number)=>set({categoryOpen:[]}),
@@ -19,9 +17,7 @@ export const CategoryWrapper = () => {
   }, []);
   //call Api here
   return (
-    <div className="w-2/5 m-4">
-      <TabWrapper />
-      <SearchInput />
+    <div className="w-full">
       {arrCategory.map((item) => {
         return <Category category={item} />;
       })}

@@ -1,22 +1,29 @@
 import { Tab, Tabs } from "@nextui-org/react";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
 import { tabWrapperState } from "./ILayout";
-
-import { AnimatePresence, motion, Variants } from "framer-motion";
 
 export const TabWrapper = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [isHover, setIsHover] = useState(false);
+  const navigation = useNavigate();
   const tabRef = useRef<HTMLDivElement>(null);
   const arrayTab: Array<tabWrapperState> = [
     {
-      title: "music",
-      key: "music"
+      title: "category",
+      key: "category",
+      href: "category"
+    },
+    {
+      title: "Test",
+      key: "test",
+      href: "example"
     },
     {
       title: "photo",
-      key: "photo"
+      key: "about",
+      href: "/photo"
     },
     {
       title: "video",
@@ -33,10 +40,6 @@ export const TabWrapper = () => {
     {
       title: "Check",
       key: "Check"
-    },
-    {
-      title: "Test",
-      key: "Test"
     }
   ];
 
@@ -72,7 +75,6 @@ export const TabWrapper = () => {
       opacity: 1
     }
   };
-
   return (
     <>
       <div className="flex justify-between items-center relative z-0">
@@ -120,13 +122,17 @@ export const TabWrapper = () => {
             className=""
             variant="underlined"
             color="default"
+            onSelectionChange={(key) => {
+              navigation({
+                to: `/test/${key}`
+              });
+            }}
           >
             {arrayTab.map((item) => {
-              return <Tab className="min-w-20 p-0" key={item["key"]} title={item["title"]} />;
+              return <Tab className="min-w-20 p-0" title={item.title} key={item["key"]}></Tab>;
             })}
           </Tabs>
         </div>
-
         <div className="absolute right-0 top-0 z-10">
           <AnimatePresence>
             {isHover && canScrollRight && (
