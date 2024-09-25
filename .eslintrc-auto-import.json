@@ -44,6 +44,7 @@
     "LayoutSearchInput": true,
     "LayoutExample": true,
     "tabStore": true,
-    "useTabStore": true
+    "useTabStore": true,
+    "LayoutAddTab": true
   }
 }

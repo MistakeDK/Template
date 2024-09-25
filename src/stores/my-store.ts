@@ -49,7 +49,7 @@ export const useMyStore = create<State>((set) => ({
     );
   }
 }));
-interface tab{
+export interface tab{
   key:string,
   title:string
 }

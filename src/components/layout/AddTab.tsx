@@ -1,7 +1,10 @@
 import { Input, Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
+interface prop {
+  icon: React.ReactNode;
+}
 
-export const AddTab = () => {
+export const AddTab = ({ icon }: prop) => {
   const tabStore = useTabStore();
   const [text, setText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +21,7 @@ export const AddTab = () => {
       >
         <PopoverTrigger>
           <ButtonVariant focus={true} disableAnimation onClick={() => setIsOpen(true)} isIconOnly size="xs">
-            Add
+            {icon}
           </ButtonVariant>
         </PopoverTrigger>
         <PopoverContent className="w-60">

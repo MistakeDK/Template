@@ -1,21 +1,29 @@
 import { Tab, Tabs } from "@nextui-org/react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
+import { ArrowLeftIcon } from "../../assets/ArrowLeftIcon";
+import { ArrowRightIcon } from "../../assets/ArrowRightIcon";
+
+// interface props {
+//   classColor: string;
+//   variant: "solid" | "bordered" | "light" | "underlined";
+//   classHoverTab: string;
+//   classCustomTabs?: "string";
+//   classCustomTab?: "string";
+// }
 
 export const TabWrapper = () => {
+  const tabRef = useRef<HTMLDivElement>(null);
+  const tabState = useTabStore();
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [isHover, setIsHover] = useState(false);
   const navigation = useNavigate();
-  const tabRef = useRef<HTMLDivElement>(null);
-  const tabState = useTabStore();
-
   const scrollLeft = () => {
     if (tabRef.current) {
       tabRef.current.scrollBy({ left: -80, behavior: "smooth" });
     }
   };
-
   const scrollRight = () => {
     if (tabRef.current) {
       tabRef.current.scrollBy({ left: 80, behavior: "smooth" });
@@ -25,7 +33,6 @@ export const TabWrapper = () => {
     if (tabRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = tabRef.current;
       setCanScrollLeft(scrollLeft > 0);
-
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
     }
   };
@@ -43,11 +50,10 @@ export const TabWrapper = () => {
       opacity: 1
     }
   };
-
   return (
     <>
       <div className="relative z-0">
-        <div className="absolute left-0 top-0 z-10 ">
+        <div className="absolute -left-4 top-0 z-10 ">
           <AnimatePresence>
             {isHover && canScrollLeft && (
               <motion.div
@@ -57,27 +63,15 @@ export const TabWrapper = () => {
                 exit={{ maxHeight: "auto", opacity: 0 }}
                 transition={{ duration: 1 }}
               >
-                <ButtonVariant className="mr-3" disableAnimation isIconOnly onClick={scrollLeft} size="xss">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-arrow-left"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
-                    />
-                  </svg>
+                <ButtonVariant className="" disableAnimation isIconOnly onClick={scrollLeft} size="xss">
+                  <ArrowLeftIcon />
                 </ButtonVariant>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
         <div
-          className="overflow-x-scroll z-0 scrollbar-hide overflow-y-hidden"
+          className="overflow-x-scroll z-0 rounded-xl scrollbar-hide overflow-y-hidden"
           ref={tabRef}
           onScroll={checkForScrollPosition} // Listen for scrolling
         >
@@ -89,7 +83,7 @@ export const TabWrapper = () => {
               }, 3000)
             }
             className=""
-            variant="underlined"
+            variant="solid"
             color="default"
             onSelectionChange={(key) => {
               navigation({
@@ -102,7 +96,7 @@ export const TabWrapper = () => {
             })}
           </Tabs>
         </div>
-        <div className="absolute right-0 top-0 z-10">
+        <div className="absolute -right-4 top-0 z-10">
           <AnimatePresence>
             {isHover && canScrollRight && (
               <motion.div
@@ -112,27 +106,13 @@ export const TabWrapper = () => {
                 exit={{ maxHeight: "auto", opacity: 0 }}
                 transition={{ duration: 1 }}
               >
-                <ButtonVariant className="ml-3" disableAnimation isIconOnly onClick={scrollRight} size="xss">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="bi bi-arrow-right"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
-                    />
-                  </svg>
+                <ButtonVariant className="" disableAnimation isIconOnly onClick={scrollRight} size="xss">
+                  <ArrowRightIcon />
                 </ButtonVariant>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        {/* <div className="absolute top-0 -right-8">
-        </div> */}
       </div>
     </>
   );
