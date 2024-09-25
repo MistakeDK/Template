@@ -49,3 +49,47 @@ export const useMyStore = create<State>((set) => ({
     );
   }
 }));
+interface tab{
+  key:string,
+  title:string
+}
+interface tabState{
+  tab:Array<tab>
+  add:(tab:tab)=>void
+}
+
+
+export const useTabStore=create<tabState>((set)=>({
+  tab:[{
+    title: "category",
+    key: "category"
+  },
+  {
+    title: "Example",
+    key: "example"
+  },
+  {
+    title: "photo",
+    key: "about"
+  },
+  {
+    title: "video",
+    key: "video"
+  },
+  {
+    title: "Camera",
+    key: "Camera"
+  },
+  {
+    title: "Wether",
+    key: "Wether"
+  },
+  {
+    title: "Check",
+    key: "Check"
+  }],
+  
+  add:(newTab:tab)=>set(produce((state)=>{
+    state.tab.push(newTab)
+  }))
+}))

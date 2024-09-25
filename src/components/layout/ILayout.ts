@@ -20,14 +20,8 @@ export interface categoryItemState{
     titleItem:string,
     btnGroupItem:Array<IbtnGroup>
 }
-export interface viewState{
-    categoryOpen:Array<number>,
-    removeId:(index:number)=>void,
-    pushId:(index:number)=>void,
-    removeAll:()=>void
-}
+
 export interface tabWrapperState{
     title:string,
     key:string,
-    href?:string
 }

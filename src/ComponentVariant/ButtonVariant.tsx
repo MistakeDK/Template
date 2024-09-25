@@ -2,6 +2,9 @@ import { Button, extendVariants } from "@nextui-org/react";
 
 export const ButtonVariant = extendVariants(Button, {
   variants: {
+    focus: {
+      true: "outline-none shadow-none"
+    },
     color: {
       primary: "bg-cyan-300"
     },

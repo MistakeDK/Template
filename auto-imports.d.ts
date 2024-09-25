@@ -30,6 +30,7 @@ declare global {
   const lazy: typeof import('react')['lazy']
   const memo: typeof import('react')['memo']
   const startTransition: typeof import('react')['startTransition']
+  const tabStore: typeof import('./src/stores/my-store')['tabStore']
   const useCallback: typeof import('react')['useCallback']
   const useContext: typeof import('react')['useContext']
   const useDebugValue: typeof import('react')['useDebugValue']
@@ -46,5 +47,6 @@ declare global {
   const useRef: typeof import('react')['useRef']
   const useState: typeof import('react')['useState']
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
+  const useTabStore: typeof import('./src/stores/my-store')['useTabStore']
   const useTransition: typeof import('react')['useTransition']
 }

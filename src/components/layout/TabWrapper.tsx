@@ -1,7 +1,6 @@
 import { Tab, Tabs } from "@nextui-org/react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
-import { tabWrapperState } from "./ILayout";
 
 export const TabWrapper = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -9,39 +8,7 @@ export const TabWrapper = () => {
   const [isHover, setIsHover] = useState(false);
   const navigation = useNavigate();
   const tabRef = useRef<HTMLDivElement>(null);
-  const arrayTab: Array<tabWrapperState> = [
-    {
-      title: "category",
-      key: "category",
-      href: "category"
-    },
-    {
-      title: "Test",
-      key: "test",
-      href: "example"
-    },
-    {
-      title: "photo",
-      key: "about",
-      href: "/photo"
-    },
-    {
-      title: "video",
-      key: "video"
-    },
-    {
-      title: "Camera",
-      key: "Camera"
-    },
-    {
-      title: "Wether",
-      key: "Wether"
-    },
-    {
-      title: "Check",
-      key: "Check"
-    }
-  ];
+  const tabState = useTabStore();
 
   const scrollLeft = () => {
     if (tabRef.current) {
@@ -58,6 +25,7 @@ export const TabWrapper = () => {
     if (tabRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = tabRef.current;
       setCanScrollLeft(scrollLeft > 0);
+
       setCanScrollRight(scrollLeft + clientWidth < scrollWidth);
     }
   };
@@ -65,7 +33,7 @@ export const TabWrapper = () => {
     checkForScrollPosition();
     window.addEventListener("resize", checkForScrollPosition);
     return () => window.removeEventListener("resize", checkForScrollPosition);
-  }, []);
+  }, [tabState.tab.length]);
   const Variant: Variants = {
     appearInitial: {
       height: "auto",
@@ -75,9 +43,10 @@ export const TabWrapper = () => {
       opacity: 1
     }
   };
+
   return (
     <>
-      <div className="flex justify-between items-center relative z-0">
+      <div className="relative z-0">
         <div className="absolute left-0 top-0 z-10 ">
           <AnimatePresence>
             {isHover && canScrollLeft && (
@@ -108,7 +77,7 @@ export const TabWrapper = () => {
           </AnimatePresence>
         </div>
         <div
-          className="overflow-x-auto z-0 scrollbar-hide overflow-y-hidden"
+          className="overflow-x-scroll z-0 scrollbar-hide overflow-y-hidden"
           ref={tabRef}
           onScroll={checkForScrollPosition} // Listen for scrolling
         >
@@ -128,7 +97,7 @@ export const TabWrapper = () => {
               });
             }}
           >
-            {arrayTab.map((item) => {
+            {tabState.tab.map((item) => {
               return <Tab className="min-w-20 p-0" title={item.title} key={item["key"]}></Tab>;
             })}
           </Tabs>
@@ -162,6 +131,8 @@ export const TabWrapper = () => {
             )}
           </AnimatePresence>
         </div>
+        {/* <div className="absolute top-0 -right-8">
+        </div> */}
       </div>
     </>
   );

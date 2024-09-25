@@ -1,11 +1,5 @@
 import { Category } from "./Category";
 import { categoryState } from "./ILayout";
-// const useViewState = create<viewState>((set)=>({
-//   categoryOpen:[],
-//   pushIndex:(index:number)=>set({categoryOpen:[]}),
-//   removeAll:()=>set({categoryOpen:[]}),
-//   removeIndex:()=>
-// }));
 export const CategoryWrapper = () => {
   const [arrCategory, setArrCategory] = useState<categoryState[]>([]);
   useEffect(() => {
@@ -15,7 +9,6 @@ export const CategoryWrapper = () => {
     };
     callApi();
   }, []);
-  //call Api here
   return (
     <div className="w-full">
       {arrCategory.map((item) => {
