@@ -13,6 +13,7 @@ declare global {
   const LayoutCategoryItem: typeof import('@/components/layout/CategoryItem.tsx')['CategoryItem']
   const LayoutCategoryWrapper: typeof import('@/components/layout/CategoryWrapper.tsx')['CategoryWrapper']
   const LayoutExample: typeof import('@/components/layout/Example.tsx')['Example']
+  const LayoutMyTable: typeof import('@/components/layout/MyTable.tsx')['MyTable']
   const LayoutNavbar: typeof import('@/components/layout/Navbar.tsx')['Navbar']
   const LayoutSearchInput: typeof import('@/components/layout/SearchInput.tsx')['SearchInput']
   const LayoutTabList: typeof import('@/components/layout/TabList.tsx')['TabList']

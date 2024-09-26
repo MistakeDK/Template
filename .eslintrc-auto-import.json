@@ -47,6 +47,7 @@
     "useTabStore": true,
     "LayoutAddTab": true,
     "LayoutTabList": true,
-    "LayoutNavbar": true
+    "LayoutNavbar": true,
+    "LayoutMyTable": true
   }
 }
