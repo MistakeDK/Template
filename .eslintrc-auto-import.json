@@ -45,6 +45,8 @@
     "LayoutExample": true,
     "tabStore": true,
     "useTabStore": true,
-    "LayoutAddTab": true
+    "LayoutAddTab": true,
+    "LayoutTabList": true,
+    "LayoutNavbar": true
   }
 }

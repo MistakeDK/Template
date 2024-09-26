@@ -5,10 +5,12 @@ import { CategoryItem } from "./CategoryItem";
 import { categoryItemState, categoryState } from "./ILayout";
 interface prop {
   category: categoryState;
+  classWrapper?: string;
+  classItem?: string;
 }
 
-export const Category = ({ category }: prop) => {
-  const { btnGroup, id, title, url, icon } = category;
+export const Category = ({ classItem, category, classWrapper }: prop) => {
+  const { btnGroup, title, icon } = category;
   const [isOpen, setIsOpen] = useState(false);
   const [itemCategory, setItemCategory] = useState<categoryItemState[]>([]);
   useEffect(() => {
@@ -35,7 +37,7 @@ export const Category = ({ category }: prop) => {
   };
   return (
     <>
-      <div className="bg-red-600 p-2 w-full flex justify-between" onClick={() => setIsOpen(!isOpen)}>
+      <div className={`${classWrapper} w-full flex justify-between`} onClick={() => setIsOpen(!isOpen)}>
         <div className="space-x-2 flex items-center">
           {icon}
           {title}
@@ -46,6 +48,7 @@ export const Category = ({ category }: prop) => {
               <>
                 <ButtonVariant
                   isIconOnly
+                  disableAnimation
                   onClick={(evt) => {
                     evt.stopPropagation();
                     item.onClick(evt, item.info.test);
@@ -68,7 +71,7 @@ export const Category = ({ category }: prop) => {
           className="overflow-hidden"
         >
           {itemCategory.map((item) => {
-            return <CategoryItem key={item.titleItem} categoryItem={item} />;
+            return <CategoryItem classItem={classItem} key={item.titleItem} categoryItem={item} />;
           })}
         </motion.div>
       </RenderIf>

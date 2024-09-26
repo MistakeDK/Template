@@ -1,21 +1,15 @@
-import { createLazyFileRoute, Outlet } from "@tanstack/react-router";
-import { SearchInput } from "../components/layout/SearchInput";
-import { TabWrapper } from "../components/layout/TabWrapper";
-
+import { createLazyFileRoute } from "@tanstack/react-router";
+import { MyNavbar } from "../components/layout/Navbar";
 export const Route = createLazyFileRoute("/test")({
   component: test
 });
 function test() {
   return (
     <DefaultLayout>
-      <div className="flex overflow-auto p-8">
-        <div className="w-1/3">
-          <TabWrapper />
-          <SearchInput />
-          {/* <CategoryWrapper /> */}
-          <Outlet />
+      <div className="flex justify-end h-screen">
+        <div className="">
+          <MyNavbar />
         </div>
-        {/* <AddTab icon={<PlusIcon />} /> */}
       </div>
     </DefaultLayout>
   );

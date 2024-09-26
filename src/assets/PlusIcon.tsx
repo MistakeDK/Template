@@ -1,6 +1,13 @@
 export const PlusIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 50 50" xmlSpace="preserve">
+    <svg
+      width={20}
+      height={20}
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      viewBox="0 0 50 50"
+      xmlSpace="preserve"
+    >
       <circle cx="25" cy="25" r="25" fill="#43B05C"></circle>
       <path
         fill="none"

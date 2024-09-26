@@ -6,11 +6,16 @@ interface ISearchState {
   search: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
+interface prop {
+  classInput: string;
+  classWrapper: string;
+  isHaveClearButton: boolean;
+}
 const useStoreSearch = create<ISearchState>((set) => ({
   search: "",
   onChange: (e) => set({ search: e.target.value })
 }));
-export const SearchInput = () => {
+export const SearchInput = ({ classWrapper, classInput }: prop) => {
   const value = useStoreSearch((state) => state.search);
   const onChange = useStoreSearch((state) => state.onChange);
   const handleSearch = () => {
@@ -25,7 +30,8 @@ export const SearchInput = () => {
     <>
       <Input
         classNames={{
-          inputWrapper: ""
+          input: `${classInput}`,
+          inputWrapper: `${classWrapper}`
         }}
         className="my-2"
         label="Search"
@@ -33,7 +39,6 @@ export const SearchInput = () => {
         variant="faded"
         radius="md"
         size="sm"
-        isClearable
         onChange={(e) => onChange(e)}
         onKeyDown={handleEnter}
       />
