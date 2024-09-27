@@ -17,6 +17,7 @@ import { Route as rootRoute } from './routes/__root'
 // Create Virtual Routes
 
 const TestTableLazyImport = createFileRoute('/testTable')()
+const TestComponentLazyImport = createFileRoute('/testComponent')()
 const TestLazyImport = createFileRoute('/test')()
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
@@ -29,6 +30,11 @@ const TestTableLazyRoute = TestTableLazyImport.update({
   path: '/testTable',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/testTable.lazy').then((d) => d.Route))
+
+const TestComponentLazyRoute = TestComponentLazyImport.update({
+  path: '/testComponent',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/testComponent.lazy').then((d) => d.Route))
 
 const TestLazyRoute = TestLazyImport.update({
   path: '/test',
@@ -80,6 +86,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TestLazyImport
       parentRoute: typeof rootRoute
     }
+    '/testComponent': {
+      id: '/testComponent'
+      path: '/testComponent'
+      fullPath: '/testComponent'
+      preLoaderRoute: typeof TestComponentLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/testTable': {
       id: '/testTable'
       path: '/testTable'
@@ -124,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
   '/test': typeof TestLazyRouteWithChildren
+  '/testComponent': typeof TestComponentLazyRoute
   '/testTable': typeof TestTableLazyRoute
   '/test/category': typeof TestCategoryLazyRoute
   '/test/example': typeof TestExampleLazyRoute
@@ -133,6 +147,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
   '/test': typeof TestLazyRouteWithChildren
+  '/testComponent': typeof TestComponentLazyRoute
   '/testTable': typeof TestTableLazyRoute
   '/test/category': typeof TestCategoryLazyRoute
   '/test/example': typeof TestExampleLazyRoute
@@ -143,6 +158,7 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
   '/test': typeof TestLazyRouteWithChildren
+  '/testComponent': typeof TestComponentLazyRoute
   '/testTable': typeof TestTableLazyRoute
   '/test/category': typeof TestCategoryLazyRoute
   '/test/example': typeof TestExampleLazyRoute
@@ -154,6 +170,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/test'
+    | '/testComponent'
     | '/testTable'
     | '/test/category'
     | '/test/example'
@@ -162,6 +179,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/test'
+    | '/testComponent'
     | '/testTable'
     | '/test/category'
     | '/test/example'
@@ -170,6 +188,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/test'
+    | '/testComponent'
     | '/testTable'
     | '/test/category'
     | '/test/example'
@@ -180,6 +199,7 @@ export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AboutLazyRoute: typeof AboutLazyRoute
   TestLazyRoute: typeof TestLazyRouteWithChildren
+  TestComponentLazyRoute: typeof TestComponentLazyRoute
   TestTableLazyRoute: typeof TestTableLazyRoute
 }
 
@@ -187,6 +207,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AboutLazyRoute: AboutLazyRoute,
   TestLazyRoute: TestLazyRouteWithChildren,
+  TestComponentLazyRoute: TestComponentLazyRoute,
   TestTableLazyRoute: TestTableLazyRoute,
 }
 
@@ -205,6 +226,7 @@ export const routeTree = rootRoute
         "/",
         "/about",
         "/test",
+        "/testComponent",
         "/testTable"
       ]
     },
@@ -220,6 +242,9 @@ export const routeTree = rootRoute
         "/test/category",
         "/test/example"
       ]
+    },
+    "/testComponent": {
+      "filePath": "testComponent.lazy.tsx"
     },
     "/testTable": {
       "filePath": "testTable.lazy.tsx"

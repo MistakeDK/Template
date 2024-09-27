@@ -48,6 +48,7 @@
     "LayoutAddTab": true,
     "LayoutTabList": true,
     "LayoutNavbar": true,
-    "LayoutMyTable": true
+    "LayoutMyTable": true,
+    "BTBT1": true
   }
 }
