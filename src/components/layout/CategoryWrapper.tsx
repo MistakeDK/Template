@@ -1,5 +1,4 @@
 import { CameraIcon } from "../../assets/CameraIcon";
-import { HeartIcon } from "../../assets/HeartIcon";
 import { Category } from "./Category";
 import { categoryState } from "./ILayout";
 export const CategoryWrapper = () => {
@@ -8,18 +7,17 @@ export const CategoryWrapper = () => {
   };
   const arrCategory: Array<categoryState> = [
     {
-      icon: <HeartIcon filled={"black"} />,
       title: "First",
       btnGroup: [
         {
           btnName: "edit",
-          icon: <CameraIcon />,
+          icon: <CameraIcon key={"C1"} color="fill-amber-400" />,
           onClick: editOnClick,
           info: { test: "abc" }
         },
         {
           btnName: "New",
-          icon: <CameraIcon />,
+          icon: <CameraIcon key={"C2"} color="fill-amber-400" />,
           onClick: editOnClick,
           info: { test: "abd" }
         }
@@ -28,18 +26,17 @@ export const CategoryWrapper = () => {
       url: ""
     },
     {
-      icon: <HeartIcon filled={"black"} />,
       title: "First",
       btnGroup: [
         {
           btnName: "edit",
-          icon: <CameraIcon />,
+          icon: <CameraIcon key={"C3"} color="fill-amber-400" />,
           onClick: editOnClick,
           info: { test: "abc" }
         },
         {
           btnName: "New",
-          icon: <CameraIcon />,
+          icon: <CameraIcon key={"C4"} color="fill-amber-400" />,
           onClick: editOnClick,
           info: { test: "abd" }
         }
@@ -49,9 +46,16 @@ export const CategoryWrapper = () => {
     }
   ];
   return (
-    <div className="w-full">
+    <div className="w-full space-y-0.5">
       {arrCategory.map((item) => {
-        return <Category classWrapper="bg-red-900" category={item} />;
+        return (
+          <Category
+            key={item.id}
+            classWrapper="bg-[#4A4947] rounded-lg p-0.5 "
+            classItem="hover:bg-[#d4d4d8] rounded-lg text-red-300"
+            category={item}
+          />
+        );
       })}
     </div>
   );

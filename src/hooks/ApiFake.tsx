@@ -5,7 +5,6 @@ const editOnClick = (evt: React.MouseEvent<HTMLButtonElement>, info: object) => 
 };
 const arrCategoryItem: Array<categoryItemState> = [
   {
-    iconItem: <CameraIcon filled={"cyan"} />,
     titleItem: "camera",
     btnGroupItem: [
       {
@@ -23,7 +22,6 @@ const arrCategoryItem: Array<categoryItemState> = [
     ]
   },
   {
-    iconItem: <CameraIcon filled={"cyan"} />,
     titleItem: "camera",
     btnGroupItem: [
       {

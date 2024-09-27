@@ -37,18 +37,19 @@ export const Category = ({ classItem, category, classWrapper }: prop) => {
   };
   return (
     <>
-      <div className={`${classWrapper} w-full flex justify-between`} onClick={() => setIsOpen(!isOpen)}>
-        <div className="space-x-2 flex items-center">
-          {icon}
-          {title}
+      <div className={`${classWrapper} w-full flex justify-between cursor-pointer`} onClick={() => setIsOpen(!isOpen)}>
+        <div className="space-x-2 flex items-center text-white">
+          <div>{icon}</div>
+          <div>{title}</div>
         </div>
-        <div className="space-x-2 flex">
+        <div className="flex">
           {btnGroup.map((item) => {
             return (
               <>
                 <ButtonVariant
-                  isIconOnly
                   disableAnimation
+                  isIconOnly
+                  className="data-[hover=true]:bg-[#FCDE70] data-[hover=true]:shadow-md space-x-2 transition-all"
                   onClick={(evt) => {
                     evt.stopPropagation();
                     item.onClick(evt, item.info.test);
@@ -71,7 +72,7 @@ export const Category = ({ classItem, category, classWrapper }: prop) => {
           className="overflow-hidden"
         >
           {itemCategory.map((item) => {
-            return <CategoryItem classItem={classItem} key={item.titleItem} categoryItem={item} />;
+            return <CategoryItem key={item.titleItem} classItem={classItem} categoryItem={item} />;
           })}
         </motion.div>
       </RenderIf>

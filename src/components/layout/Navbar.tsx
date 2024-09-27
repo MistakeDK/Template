@@ -28,7 +28,7 @@ export const MyNavbar = () => {
   return (
     <>
       <div className="flex w-full overflow-x-hidden ">
-        <div className="relative w-[30px]">
+        <div className="relative w-[30px] ">
           <ButtonVariant
             disableAnimation
             isIconOnly
@@ -40,27 +40,28 @@ export const MyNavbar = () => {
               }, 300);
             }}
           >
-            {isOpen ? <TriangleRightIcon /> : <TrigLeftIcon />}
+            {isOpen ? <TriangleRightIcon color="fill-amber-400" /> : <TrigLeftIcon color="fill-amber-400" />}
           </ButtonVariant>
         </div>
         <motion.div
-          className="flex flex-col h-screen bg-blue-300 p-1 border-l-2 border-red-600"
+          className="flex flex-col h-screen bg-neutral-700 p-1 border-l-2 "
           variants={variants}
           initial={false}
           animate={isOpen ? "open" : "close"}
           transition={{ duration: 0.3, ease: "linear" }}
         >
-          <div className="flex w-full">
+          <div className="flex w-full space-x-2">
             <TabWrapper
               width="w-[280px]"
-              classTabList="bg-green-700 pl-0"
-              classTab="hover:bg-red-200 opacity-100 data-[hover-unselected=true]:opacity-100"
+              classTabList="pl-0.5"
+              classTab=""
               variant="bordered"
-              classTabContent="text-white"
+              classTabContent=""
+              classCursor="!bg-[#3A6D8C]"
               timeHoverDisplay={3} //Unit MiliSecond
             />
             <div className={isOpen ? "flex" : "hidden"}>
-              <AddTab placement="top-end" icon={<PlusIcon />} />
+              <AddTab placement="top-end" icon={<PlusIcon color="fill-amber-400" />} />
             </div>
           </div>
           <SearchInput classWrapper="" classInput="" isHaveClearButton />

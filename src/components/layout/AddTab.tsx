@@ -1,8 +1,7 @@
-import { Input, Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
+import { Button, Input, Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 import React from "react";
 import { ArrowLeftIcon } from "../../assets/ArrowLeftIcon";
 import { ArrowRightIcon } from "../../assets/ArrowRightIcon";
-import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
 import { useTabStore } from "../layout/TabWrapper";
 type PopoverPlacement =
   | "top"
@@ -48,19 +47,12 @@ export const AddTab = ({ icon, placement }: prop) => {
         offset={10}
       >
         <PopoverTrigger>
-          <ButtonVariant focus={true} disableAnimation onClick={() => setIsOpen(true)} isIconOnly>
+          <Button disableAnimation onClick={() => setIsOpen(true)} isIconOnly>
             {icon}
-          </ButtonVariant>
+          </Button>
         </PopoverTrigger>
         <PopoverContent>
           <Input
-            // startContent={
-            //   <Select label="icon" size="sm" className="shadow-lg">
-            //     {IconTab.map((item) => {
-            //       return <SelectItem key={item.key}>{item.icon}</SelectItem>;
-            //     })}
-            //   </Select>
-            // }
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 tabStore.add({

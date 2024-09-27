@@ -11,7 +11,7 @@ export const CategoryItem = ({ categoryItem, classItem }: prop) => {
   return (
     <>
       <div className={`flex pl-4 space-x-2 py-1 justify-between ${classItem}`}>
-        <div className="flex items-center">
+        <div className="flex items-center ">
           {iconItem}
           {titleItem}
         </div>
@@ -19,7 +19,7 @@ export const CategoryItem = ({ categoryItem, classItem }: prop) => {
           {btnGroupItem.map((item) => {
             return (
               <>
-                <ButtonVariant size="xss" isIconOnly onClick={(evt) => item.onClick(evt, { test: "abc" })}>
+                <ButtonVariant className="" size="xss" isIconOnly onClick={(evt) => item.onClick(evt, { test: "abc" })}>
                   {item.icon}
                 </ButtonVariant>
               </>

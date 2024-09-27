@@ -7,5 +7,32 @@ export default {
     extend: {}
   },
   darkMode: "class",
-  plugins: [nextui()]
+  plugins: [nextui({
+    themes:{
+      dark:{
+        layout:{
+      radius:{
+        small:"3px",
+        medium:"6px",
+        large:"12px"
+      },
+      borderWidth:{
+        small:"1px",
+        medium:"2px",
+        large:"3px"
+      },
+      hoverOpacity:"0.3"
+    },
+        colors:{
+          default:"#A04747",
+          primary:{
+            DEFAULT: "#BEF264",
+            foreground: "#fff",
+
+          },
+          focus:"#BEF264"
+        }
+      }
+    }
+  })]
 };

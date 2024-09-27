@@ -1,10 +1,10 @@
-export const TriangleRightIcon = () => {
+export const TriangleRightIcon = ({ color }: { color: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={20}
       height={20}
-      fill="#000"
+      className={color}
       version="1.1"
       viewBox="0 0 490 490"
       xmlSpace="preserve"

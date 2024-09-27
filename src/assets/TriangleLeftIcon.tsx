@@ -1,10 +1,10 @@
-export const TrigLeftIcon = () => {
+export const TrigLeftIcon = ({ color }: { color: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="800"
       height="800"
-      fill="#000"
+      className={color}
       version="1.1"
       viewBox="0 0 123.959 123.959"
       xmlSpace="preserve"

@@ -1,6 +1,7 @@
 import { Input } from "@nextui-org/react";
 import React, { ChangeEvent } from "react";
 import { create } from "zustand";
+import { SearchIcon } from "../../assets/SearchIcon";
 
 interface ISearchState {
   search: string;
@@ -31,16 +32,19 @@ export const SearchInput = ({ classWrapper, classInput }: prop) => {
       <Input
         classNames={{
           input: `${classInput}`,
-          inputWrapper: `${classWrapper}`
+          inputWrapper: `${classWrapper} h-[18px]`
         }}
+        disableAnimation
         className="my-2"
-        label="Search"
+        label=""
         type="text"
-        variant="faded"
+        variant="flat"
         radius="md"
         size="sm"
         onChange={(e) => onChange(e)}
         onKeyDown={handleEnter}
+        placeholder="Search"
+        endContent={<SearchIcon color="fill-red-300" />}
       />
     </>
   );

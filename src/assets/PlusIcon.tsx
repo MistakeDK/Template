@@ -1,4 +1,4 @@
-export const PlusIcon = () => {
+export const PlusIcon = ({ color }: { color: string }) => {
   return (
     <svg
       width={20}
@@ -7,8 +7,9 @@ export const PlusIcon = () => {
       version="1.1"
       viewBox="0 0 50 50"
       xmlSpace="preserve"
+      className={color}
     >
-      <circle cx="25" cy="25" r="25" fill="#43B05C"></circle>
+      <circle cx="25" cy="25" r="25"></circle>
       <path
         fill="none"
         stroke="#FFF"

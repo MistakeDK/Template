@@ -6,28 +6,25 @@ import { create } from "zustand";
 import { ButtonVariant } from "../../ComponentVariant/ButtonVariant";
 import { ArrowLeftIcon } from "../../assets/ArrowLeftIcon";
 import { ArrowRightIcon } from "../../assets/ArrowRightIcon";
-import { CameraIcon } from "../../assets/CameraIcon";
-import { HeartIcon } from "../../assets/HeartIcon";
 import { tab, tabState } from "../../stores/my-store";
 interface prop {
-  classTabList: string;
+  classTabList?: string;
   variant: "solid" | "bordered" | "light" | "underlined";
-  classTab: string;
-  classTabContent: string;
+  classTab?: string;
+  classTabContent?: string;
   timeHoverDisplay: number;
   width: string;
+  classCursor?: string;
 }
 export const useTabStore = create<tabState>((set) => ({
   tab: [
     {
       title: "category",
-      key: "category",
-      icon: <HeartIcon />
+      key: "category"
     },
     {
       title: "Example",
-      key: "example",
-      icon: <CameraIcon />
+      key: "example"
     },
     {
       title: "photo",
@@ -57,7 +54,15 @@ export const useTabStore = create<tabState>((set) => ({
       })
     )
 }));
-export const TabWrapper = ({ width, timeHoverDisplay, classTabContent, classTabList, classTab, variant }: prop) => {
+export const TabWrapper = ({
+  width,
+  timeHoverDisplay,
+  classTabContent,
+  classTabList,
+  classTab,
+  variant,
+  classCursor
+}: prop) => {
   const tabRef = useRef<HTMLDivElement>(null);
   const tabState = useTabStore();
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -129,7 +134,7 @@ export const TabWrapper = ({ width, timeHoverDisplay, classTabContent, classTabL
                 className="bg-gradient-to-r from-neutral-800 from-0% via-transparent via-50% to-transparent to-90% rounded-l-md pr-4"
               >
                 <ButtonVariant disableAnimation isIconOnly onClick={scrollLeft} size="xss">
-                  <ArrowLeftIcon />
+                  <ArrowLeftIcon color="fill-red-800" />
                 </ButtonVariant>
               </motion.div>
             )}
@@ -147,7 +152,7 @@ export const TabWrapper = ({ width, timeHoverDisplay, classTabContent, classTabL
                 className="bg-gradient-to-r from-transparent from-0% via-transparent via-40% to-neutral-800 to-90% rounded-r-md pl-4"
               >
                 <ButtonVariant className="" disableAnimation isIconOnly onClick={scrollRight} size="xss">
-                  <ArrowRightIcon />
+                  <ArrowRightIcon color="fill-red-800" />
                 </ButtonVariant>
               </motion.div>
             )}
@@ -162,7 +167,9 @@ export const TabWrapper = ({ width, timeHoverDisplay, classTabContent, classTabL
           <Tabs
             classNames={{
               tabList: `${classTabList}`,
-              tabContent: `${classTabContent}`
+              tabContent: `${classTabContent}`,
+              cursor: `${classCursor}`,
+              tab: `${classTab}`
             }}
             variant={variant}
             onSelectionChange={(key) => {
@@ -174,7 +181,7 @@ export const TabWrapper = ({ width, timeHoverDisplay, classTabContent, classTabL
             {tabState.tab.map((item) => {
               return (
                 <Tab
-                  className={`min-w-18 ${classTab}`}
+                  className={`min-w-18`}
                   title={
                     <div className="flex items-center">
                       {item.icon}
