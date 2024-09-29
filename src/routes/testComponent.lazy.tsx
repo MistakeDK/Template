@@ -1,10 +1,10 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { BT1 } from "../components/BT/BT1";
+import { BT3 } from "../components/BT/BT3";
 
 export const Route = createLazyFileRoute("/testComponent")({
   component: () => (
     <div>
-      <BT1 />
+      <BT3 />
     </div>
   )
 });

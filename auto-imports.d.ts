@@ -8,6 +8,8 @@ export {}
 declare global {
   const AboutLayout: typeof import('./src/layouts/AboutLayout')['AboutLayout']
   const BTBT1: typeof import('@/components/BT/BT1.tsx')['BT1']
+  const BTBT2: typeof import('@/components/BT/BT2.tsx')['BT2']
+  const BTBT3: typeof import('@/components/BT/BT3.tsx')['BT3']
   const DefaultLayout: typeof import('./src/layouts/DefaultLayout')['DefaultLayout']
   const LayoutAddTab: typeof import('@/components/layout/AddTab.tsx')['AddTab']
   const LayoutCategory: typeof import('@/components/layout/Category.tsx')['Category']
