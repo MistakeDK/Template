@@ -39,7 +39,7 @@ export const BT3 = () => {
             <ArrowRightIcon color="fill-amber-400 " />
           </button>
         </div>
-        <div className="space-x-2 flex">
+        <div className="space-x-2 flex hover:shadow-xl ">
           {data.map((item) => {
             return (
               <button className="border p-1 border-blue-600 rounded-md hover:bg-red-600 hover:text-white transition-all">
