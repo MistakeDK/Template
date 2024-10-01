@@ -1,16 +1,14 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { MyNavbar } from "../components/layout/Navbar";
+import { BT4 } from "../components/BT/BT4";
+import { BT5 } from "../components/BT/BT5";
 export const Route = createLazyFileRoute("/test")({
   component: test
 });
 function test() {
   return (
-    <DefaultLayout>
-      <div className="flex justify-end h-screen">
-        <div className="">
-          <MyNavbar />
-        </div>
-      </div>
-    </DefaultLayout>
+    <div className="flex items-center">
+      <BT4 />
+      <BT5 />
+    </div>
   );
 }
