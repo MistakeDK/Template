@@ -80,5 +80,83 @@ button:focus-visible {
   .no-scrollbar {
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
+    }
+    .scrollbar-horizontal::-webkit-scrollbar {
+      height: 2px; 
+    }
+    
+    .scrollbar-horizontal::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+    
+    .scrollbar-horizontal::-webkit-scrollbar-thumb {
+      background-color: #888; 
+      border-radius: 2.5px;
+    }
+    
+    .scrollbar-horizontal::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+    .scrollbar-horizontal::-webkit-scrollbar-button:start:increment{
+      width: 4px;
+    }
+    .scrollbar-horizontal::-webkit-scrollbar-button:end:increment{
+      width: 4px;
+    }
+    
+    .scrollbar-vertical::-webkit-scrollbar {
+      width: 2px;
+    }
+    
+    .scrollbar-vertical::-webkit-scrollbar-track {
+      background: #eaeaea; 
+    }
+    
+    .scrollbar-vertical::-webkit-scrollbar-thumb {
+      background-color: #666; 
+      border-radius: 10px;
+    }
+    
+    .scrollbar-vertical::-webkit-scrollbar-thumb:hover {
+      background-color: #444;
+    }
+    .scrollbar-vertical::-webkit-scrollbar-corner{
+      display: none;
+    }
+    .scrollbar-vertical::-webkit-scrollbar-button:vertical:increment{
+      height: 0px;
+    }
+    .scrollbar-vertical::-webkit-scrollbar-button:vertical:increment{
+      height: 0px;
+    }
+  }
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
+
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+
+.slide-in-right {
+  animation: slideRight 0.5s ease-in-out forwards;
+  z-index: 10;
+}
+
+.slide-in-left {
+  animation: slideLeft 0.5s ease-in-out forwards;
+  z-index: 10;
 }

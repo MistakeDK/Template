@@ -6,7 +6,7 @@ export const MyTable = () => {
   // }
   return (
     <>
-      <div className=" p-1   w-[;]">
+      <div className=" p-1   ">
         <Table
           classNames={{
             wrapper: " p-0 rounded-none ",

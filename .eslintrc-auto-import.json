@@ -52,6 +52,9 @@
     "BTBT1": true,
     "BTBT2": true,
     "BTBT3": true,
-    "BTBT4": true
+    "BTBT4": true,
+    "BTBT5": true,
+    "BTBTTable": true,
+    "fetchFakeRow": true
   }
 }

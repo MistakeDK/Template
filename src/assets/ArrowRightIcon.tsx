@@ -1,10 +1,10 @@
-export const ArrowRightIcon = ({ color }: { color: string }) => {
+export const ArrowRightIcon = ({ color, size }: { color: string; size: number }) => {
   return (
     <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="12"
-        height="12"
+        width={size}
+        height={size}
         className={`bi bi-arrow-right ${color}`}
         viewBox="0 0 16 16"
       >

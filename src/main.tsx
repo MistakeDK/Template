@@ -25,7 +25,7 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <NextUIProvider>
-        <main className="dark ">
+        <main className="dark  text-foreground bg-background">
           <RouterProvider router={router} />
         </main>
       </NextUIProvider>

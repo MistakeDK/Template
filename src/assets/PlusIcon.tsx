@@ -7,12 +7,12 @@ export const PlusIcon = ({ color }: { color: string }) => {
       version="1.1"
       viewBox="0 0 50 50"
       xmlSpace="preserve"
-      className={color}
+      className=""
     >
       <circle cx="25" cy="25" r="25"></circle>
       <path
         fill="none"
-        stroke="#FFF"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeMiterlimit="10"
@@ -21,7 +21,7 @@ export const PlusIcon = ({ color }: { color: string }) => {
       ></path>
       <path
         fill="none"
-        stroke="#FFF"
+        stroke={color}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeMiterlimit="10"

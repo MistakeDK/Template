@@ -1,3 +1,4 @@
+
 const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
@@ -7,36 +8,36 @@ export default {
     extend: {
       backgroundImage:{
         "hero-image":"url('/src/assets/img/hero-bg.jpg')"
+      },
+      keyframes:{
+        fade:{
+          'from':{opacity:'0.4'},
+          'to':{opacity:'1'}
+        },
+        slideRight:{
+          'from':{
+            transform:'translateX(100%)'
+          },
+          'to':{
+            transform:'translateX(0%)'
+          }
+        },
+        slideLeft:{
+          'from':{
+            transform:'translateX(-100%)',
+          },
+          'to':{
+            transform:'translateX(0%)'
+          }
+        }
+      },
+      animation:{
+        fade:'fade 1s linear',
+        slideLeft:'slideLeft .5s ease-in-out backward',
+        slideRight:'slideRight .5s ease-in-out forward'
       }
     }
   },
   darkMode: "class",
-  plugins: [nextui({
-    themes:{
-      dark:{
-        layout:{
-      radius:{
-        small:"3px",
-        medium:"6px",
-        large:"12px"
-      },
-      borderWidth:{
-        small:"1px",
-        medium:"2px",
-        large:"3px"
-      },
-      hoverOpacity:"0.3"
-    },
-        colors:{
-          default:"#A04747",
-          primary:{
-            DEFAULT: "#BEF264",
-            foreground: "#fff",
-
-          },
-          focus:"#BEF264"
-        }
-      }
-    }
-  })]
+  plugins: [nextui( )]
 };
