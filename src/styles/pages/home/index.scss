@@ -1,0 +1,11 @@
+$sectionItemSize: 10rem;
+
+.section-items-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($sectionItemSize, 1fr)); // Auto-scale columns
+  gap: 1.7rem; // No gap between items
+}
+
+.section-item {
+  aspect-ratio: 1/1; // Keep the grid items square
+}

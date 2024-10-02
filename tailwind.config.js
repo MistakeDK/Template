@@ -1,43 +1,31 @@
-
 const { nextui } = require("@nextui-org/react");
+const { addIconSelectors } = require("@iconify/tailwind");
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      backgroundImage:{
-        "hero-image":"url('/src/assets/img/hero-bg.jpg')"
-      },
-      keyframes:{
-        fade:{
-          'from':{opacity:'0.4'},
-          'to':{opacity:'1'}
-        },
-        slideRight:{
-          'from':{
-            transform:'translateX(100%)'
-          },
-          'to':{
-            transform:'translateX(0%)'
-          }
-        },
-        slideLeft:{
-          'from':{
-            transform:'translateX(-100%)',
-          },
-          'to':{
-            transform:'translateX(0%)'
-          }
-        }
-      },
-      animation:{
-        fade:'fade 1s linear',
-        slideLeft:'slideLeft .5s ease-in-out backward',
-        slideRight:'slideRight .5s ease-in-out forward'
-      }
-    }
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+      "3xl": "1921px",
+      "4xl": "2881px"
+    },
+    fontFamily: {
+      sans: ['"Inter-24pt", sans-serif']
+    },
+    extend: {}
   },
   darkMode: "class",
-  plugins: [nextui( )]
+  plugins: [
+    nextui({
+      defaultTheme: "dark"
+    }),
+    // How to use - https://iconify.design/docs/usage/css/tailwind/iconify/
+    // Making some customizations - "https://iconify.design/docs/usage/css/tailwind/iconify/prefixes.html#examples" when needed
+    addIconSelectors(["solar"])
+  ]
 };

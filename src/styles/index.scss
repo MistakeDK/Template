@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Inter Normal */
+  @font-face {
+    font-style: normal;
+    font-weight: 900;
+    src: url(./fonts/Inter/24pt/Inter_24pt-Black.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 800;
+    src: url(./fonts/Inter/24pt/Inter_24pt-ExtraBold.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 700;
+    src: url(./fonts/Inter/24pt/Inter_24pt-Bold.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 600;
+    src: url(./fonts/Inter/24pt/Inter_24pt-SemiBold.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 500;
+    src: url(./fonts/Inter/24pt/Inter_24pt-Medium.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/Inter/24pt/Inter_24pt-Regular.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 300;
+    src: url(./fonts/Inter/24pt/Inter_24pt-Light.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 200;
+    src: url(./fonts/Inter/24pt/Inter_24pt-ExtraLight.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: normal;
+    font-weight: 100;
+    src: url(./fonts/Inter/24pt/Inter_24pt-Thin.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  /* Inter Italic */
+  @font-face {
+    font-style: italic;
+    font-weight: 900;
+    src: url(./fonts/Inter/24pt/Inter_24pt-BlackItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 800;
+    src: url(./fonts/Inter/24pt/Inter_24pt-ExtraBoldItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 700;
+    src: url(./fonts/Inter/24pt/Inter_24pt-BoldItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 600;
+    src: url(./fonts/Inter/24pt/Inter_24pt-SemiBoldItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 500;
+    src: url(./fonts/Inter/24pt/Inter_24pt-MediumItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 400;
+    src: url(./fonts/Inter/24pt/Inter_24pt-Italic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 300;
+    src: url(./fonts/Inter/24pt/Inter_24pt-LightItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 200;
+    src: url(./fonts/Inter/24pt/Inter_24pt-ExtraLightItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+  @font-face {
+    font-style: italic;
+    font-weight: 100;
+    src: url(./fonts/Inter/24pt/Inter_24pt-ThinItalic.ttf) format("truetype");
+    font-family: "Inter-24pt";
+    font-display: swap;
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px; /* vertical */
+  height: 3px; /* horizontal */
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0); /* Color of the scrollbar track */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 3px; /* Rounded corners on the scrollbar thumb */
+  background-color: rgba(55, 65, 81, 0.5); /* Color of the scrollbar thumb */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  cursor: grab;
+  background-color: rgba(55, 65, 81, 1); /* Darker blue on hover */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
+  background-color: rgba(55, 65, 81, 1); /* Darker blue on hover */
+}
+
+/* Container for the grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Auto-scale columns */
+  gap: 0; /* No gap between items */
+  width: 100%;
+  height: 100%;
+}
+
+/* Style for grid items */
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(115, 115, 115, 0.551);
+  /* background-color: #4a90e2; */
+  // aspect-ratio: 4/3; // Keep the grid items square
+  color: white;
+  font-size: 20px;
+  // background-image: url('./src/assets/temp/cam1.jpg');
+}
+
+.grid-item.active {
+  border: 1px solid rgb(182, 191, 255); /* Optional: add a border */
+}
+
+// .layout-bg {
+//   background: rgb(1, 14, 23);
+//   background: linear-gradient(
+//     113deg,
+//     rgba(1, 14, 23, 1) 0%,
+//     rgba(13, 29, 41, 1) 40%,
+//     rgba(13, 29, 41, 1) 60%,
+//     rgba(1, 14, 23, 1) 100%
+//   );
+// }
+.layout-bg {
+  background: #000813;
+  // background: linear-gradient(
+  //   113deg,
+  //   rgba(1, 14, 23, 1) 0%,
+  //   rgba(13, 29, 41, 1) 40%,
+  //   rgba(13, 29, 41, 1) 60%,
+  //   rgba(1, 14, 23, 1) 100%
+  // );
+}
+// .main-content-bg {
+//   $opacity: 0.3;
+//   background: rgb(5, 28, 43);
+//   background: linear-gradient(
+//     78deg,
+//     rgba(5, 28, 43, 1) 1%,
+//     rgba(1, 14, 23, 1) 14%,
+//     // rgba(6, 39, 62, 1) 76%,
+//     // rgba(15, 39, 56, 1) 87%
+//     rgba(5, 28, 43, 1) 84%
+//   );
+// }
+.main-content-bg {
+  $opacity: 0.3;
+  // background: rgb(0, 34, 56);
+  background: linear-gradient(
+    78deg,
+    rgba(0, 34, 56, 1) 1%,
+    rgba(1, 14, 23, 1) 14%,
+    // rgba(6, 39, 62, 1) 76%,
+    // rgba(15, 39, 56, 1) 87%
+    rgba(0, 34, 56, 1) 84%
+  );
+}
+.border-default-color {
+  border: 1px solid rgba(29, 56, 76, 1);
+}
+// .main-content-bg {
+//   $opacity: 0.3;
+//   background: rgb(1, 14, 23);
+//   background: linear-gradient(
+//     120deg,
+//     rgba(1, 14, 23, $opacity) 0%,
+//     rgba(5, 28, 43, $opacity) 36%,
+//     rgba(6, 39, 62, $opacity) 66%,
+//     rgba(0, 51, 89, $opacity) 81%
+//   );
+// }
+.header-bg-vertical {
+  background: rgb(0, 34, 56);
+  background: linear-gradient(180deg, rgba(0, 34, 56, 1) 0%, rgba(0, 33, 54, 1) 47%, rgba(0, 27, 45, 1) 100%);
+}
+
+.right-sidebar-bg {
+  $opacity: 0.47;
+  background: rgb(1, 14, 23);
+  background: linear-gradient(
+    143deg,
+    rgba(1, 14, 23, $opacity) 0%,
+    rgba(13, 29, 41, $opacity) 30%,
+    rgba(4, 5, 79, $opacity) 50%,
+    rgba(1, 14, 23, $opacity) 80%
+  );
+}
+
+// .main-content-bottom-bg {
+//   $opacity: 0.35;
+//   background: rgb(2, 2, 36);
+//   background: linear-gradient(
+//     167deg,
+//     rgba(2, 2, 36, $opacity) 0%,
+//     rgba(7, 7, 45, $opacity) 32%,
+//     rgba(4, 5, 79, $opacity) 58%,
+//     rgba(2, 2, 36, $opacity) 84%
+//   );
+
+.main-content-bottom-bg {
+  $opacity: 0.47;
+  background: rgb(5, 28, 43);
+  background: linear-gradient(
+    163deg,
+    rgba(5, 28, 43, $opacity) 1%,
+    rgba(1, 14, 23, $opacity) 22%,
+    rgba(4, 5, 79, $opacity) 52%,
+    rgba(15, 39, 56, $opacity) 85%
+  );
+}
+
+// color: #003657 #002C48 #002137
+// #002137

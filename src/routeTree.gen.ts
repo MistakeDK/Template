@@ -16,50 +16,26 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const TestTableLazyImport = createFileRoute('/testTable')()
-const TestComponentLazyImport = createFileRoute('/testComponent')()
-const TestLazyImport = createFileRoute('/test')()
-const AboutLazyImport = createFileRoute('/about')()
+const TestPageLazyImport = createFileRoute('/test-page')()
+const LiveViewLazyImport = createFileRoute('/live-view')()
 const IndexLazyImport = createFileRoute('/')()
-const TestExampleLazyImport = createFileRoute('/test/example')()
-const TestCategoryLazyImport = createFileRoute('/test/category')()
 
 // Create/Update Routes
 
-const TestTableLazyRoute = TestTableLazyImport.update({
-  path: '/testTable',
+const TestPageLazyRoute = TestPageLazyImport.update({
+  path: '/test-page',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/testTable.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/test-page.lazy').then((d) => d.Route))
 
-const TestComponentLazyRoute = TestComponentLazyImport.update({
-  path: '/testComponent',
+const LiveViewLazyRoute = LiveViewLazyImport.update({
+  path: '/live-view',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/testComponent.lazy').then((d) => d.Route))
-
-const TestLazyRoute = TestLazyImport.update({
-  path: '/test',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/test.lazy').then((d) => d.Route))
-
-const AboutLazyRoute = AboutLazyImport.update({
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/live-view.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
-
-const TestExampleLazyRoute = TestExampleLazyImport.update({
-  path: '/example',
-  getParentRoute: () => TestLazyRoute,
-} as any).lazy(() => import('./routes/test.example.lazy').then((d) => d.Route))
-
-const TestCategoryLazyRoute = TestCategoryLazyImport.update({
-  path: '/category',
-  getParentRoute: () => TestLazyRoute,
-} as any).lazy(() => import('./routes/test.category.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -72,143 +48,63 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyImport
+    '/live-view': {
+      id: '/live-view'
+      path: '/live-view'
+      fullPath: '/live-view'
+      preLoaderRoute: typeof LiveViewLazyImport
       parentRoute: typeof rootRoute
     }
-    '/test': {
-      id: '/test'
-      path: '/test'
-      fullPath: '/test'
-      preLoaderRoute: typeof TestLazyImport
+    '/test-page': {
+      id: '/test-page'
+      path: '/test-page'
+      fullPath: '/test-page'
+      preLoaderRoute: typeof TestPageLazyImport
       parentRoute: typeof rootRoute
-    }
-    '/testComponent': {
-      id: '/testComponent'
-      path: '/testComponent'
-      fullPath: '/testComponent'
-      preLoaderRoute: typeof TestComponentLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/testTable': {
-      id: '/testTable'
-      path: '/testTable'
-      fullPath: '/testTable'
-      preLoaderRoute: typeof TestTableLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/test/category': {
-      id: '/test/category'
-      path: '/category'
-      fullPath: '/test/category'
-      preLoaderRoute: typeof TestCategoryLazyImport
-      parentRoute: typeof TestLazyImport
-    }
-    '/test/example': {
-      id: '/test/example'
-      path: '/example'
-      fullPath: '/test/example'
-      preLoaderRoute: typeof TestExampleLazyImport
-      parentRoute: typeof TestLazyImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface TestLazyRouteChildren {
-  TestCategoryLazyRoute: typeof TestCategoryLazyRoute
-  TestExampleLazyRoute: typeof TestExampleLazyRoute
-}
-
-const TestLazyRouteChildren: TestLazyRouteChildren = {
-  TestCategoryLazyRoute: TestCategoryLazyRoute,
-  TestExampleLazyRoute: TestExampleLazyRoute,
-}
-
-const TestLazyRouteWithChildren = TestLazyRoute._addFileChildren(
-  TestLazyRouteChildren,
-)
-
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
-  '/test': typeof TestLazyRouteWithChildren
-  '/testComponent': typeof TestComponentLazyRoute
-  '/testTable': typeof TestTableLazyRoute
-  '/test/category': typeof TestCategoryLazyRoute
-  '/test/example': typeof TestExampleLazyRoute
+  '/live-view': typeof LiveViewLazyRoute
+  '/test-page': typeof TestPageLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
-  '/test': typeof TestLazyRouteWithChildren
-  '/testComponent': typeof TestComponentLazyRoute
-  '/testTable': typeof TestTableLazyRoute
-  '/test/category': typeof TestCategoryLazyRoute
-  '/test/example': typeof TestExampleLazyRoute
+  '/live-view': typeof LiveViewLazyRoute
+  '/test-page': typeof TestPageLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
-  '/test': typeof TestLazyRouteWithChildren
-  '/testComponent': typeof TestComponentLazyRoute
-  '/testTable': typeof TestTableLazyRoute
-  '/test/category': typeof TestCategoryLazyRoute
-  '/test/example': typeof TestExampleLazyRoute
+  '/live-view': typeof LiveViewLazyRoute
+  '/test-page': typeof TestPageLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/test'
-    | '/testComponent'
-    | '/testTable'
-    | '/test/category'
-    | '/test/example'
+  fullPaths: '/' | '/live-view' | '/test-page'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/test'
-    | '/testComponent'
-    | '/testTable'
-    | '/test/category'
-    | '/test/example'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/test'
-    | '/testComponent'
-    | '/testTable'
-    | '/test/category'
-    | '/test/example'
+  to: '/' | '/live-view' | '/test-page'
+  id: '__root__' | '/' | '/live-view' | '/test-page'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  AboutLazyRoute: typeof AboutLazyRoute
-  TestLazyRoute: typeof TestLazyRouteWithChildren
-  TestComponentLazyRoute: typeof TestComponentLazyRoute
-  TestTableLazyRoute: typeof TestTableLazyRoute
+  LiveViewLazyRoute: typeof LiveViewLazyRoute
+  TestPageLazyRoute: typeof TestPageLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AboutLazyRoute: AboutLazyRoute,
-  TestLazyRoute: TestLazyRouteWithChildren,
-  TestComponentLazyRoute: TestComponentLazyRoute,
-  TestTableLazyRoute: TestTableLazyRoute,
+  LiveViewLazyRoute: LiveViewLazyRoute,
+  TestPageLazyRoute: TestPageLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -224,38 +120,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about",
-        "/test",
-        "/testComponent",
-        "/testTable"
+        "/live-view",
+        "/test-page"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/about": {
-      "filePath": "about.lazy.tsx"
+    "/live-view": {
+      "filePath": "live-view.lazy.tsx"
     },
-    "/test": {
-      "filePath": "test.lazy.tsx",
-      "children": [
-        "/test/category",
-        "/test/example"
-      ]
-    },
-    "/testComponent": {
-      "filePath": "testComponent.lazy.tsx"
-    },
-    "/testTable": {
-      "filePath": "testTable.lazy.tsx"
-    },
-    "/test/category": {
-      "filePath": "test.category.lazy.tsx",
-      "parent": "/test"
-    },
-    "/test/example": {
-      "filePath": "test.example.lazy.tsx",
-      "parent": "/test"
+    "/test-page": {
+      "filePath": "test-page.lazy.tsx"
     }
   }
 }

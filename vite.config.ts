@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react-swc";
 import fg from "fast-glob";
@@ -72,7 +73,7 @@ export default defineConfig({
       include: [
         /\.[tj]sx?$/ // .ts, .tsx, .js, .jsx
       ],
-      dirs: ["./src/layouts", "./src/components", "./src/stores", "./src/hooks"],
+      dirs: ["./src/layouts", "./src/components", "./src/stores", "./src/hooks", "./src/logger", "./src/utils"],
       imports: [
         // @ts-ignore
         ...getComponentImports(),
@@ -85,7 +86,11 @@ export default defineConfig({
         // @ts-ignore
         {
           "@tanstack/router-devtools": ["TanStackRouterDevtools"]
-        }
+        },
+        // @ts-ignore
+        {
+          "framer-motion": ["motion"]
+        },
         // @ts-ignore
         // {
         //   "@nextui-org/react": []
@@ -93,6 +98,16 @@ export default defineConfig({
       ]
     })
   ],
+  css: {
+    modules: {
+      localsConvention: "camelCaseOnly" // Optional: enforce camelCase class names
+    },
+    preprocessorOptions: {
+      scss: {
+        // additionalData: `@import "./src/styles/variables.scss";` // Optional: global SCSS
+      }
+    }
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url))

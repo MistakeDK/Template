@@ -1,9 +1,10 @@
 // organize-imports-ignore
+// @ts-ignore
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { NextUIProvider } from "@nextui-org/react";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
-import "@/styles/index.css";
+import "@/styles/index.scss"
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
@@ -25,9 +26,7 @@ if (!rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <NextUIProvider>
-        <main className="dark  text-foreground bg-background">
-          <RouterProvider router={router} />
-        </main>
+        <RouterProvider router={router} />
       </NextUIProvider>
     </StrictMode>
   );
