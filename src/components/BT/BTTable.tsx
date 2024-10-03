@@ -1,103 +1,120 @@
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { useAsyncList } from "@react-stately/data";
 import React from "react";
-import { PlusIcon } from "../../assets/PlusIcon";
-import { row } from "../../hooks/ApiFake";
-
-const columns = [
-  {
-    key: "STT",
-    label: "STT"
-  },
-  {
-    key: "Camera",
-    label: "Camera"
-  },
-  {
-    key: "IPAddress",
-    label: "Địa Chỉ IP"
-  },
-  {
-    key: "Gate",
-    label: "Cổng ONVIF"
-  },
-  {
-    key: "Type",
-    label: "Loại Thiết Bị"
-  },
-  {
-    key: "Username",
-    label: "Tài Khoản"
-  },
-  {
-    key: "Password",
-    label: "Mật Khẩu"
-  },
-  {
-    key: "Support",
-    label: "Hỗ Trợ PTZ"
-  },
-  {
-    key: "Status",
-    label: "Trạng thái Camera"
-  }
-];
-
-export const BTTable = () => {
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["2"]));
-  const [data, setData] = useState<row[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const renderCell = (row: row, columnKey: React.Key) => {
-    const cellValue = row[columnKey as keyof row];
-    switch (columnKey) {
-      case "Password":
-        return <>******</>;
-      case "Status":
-        return (
-          <div className="flex justify-center">
-            <div>
-              <PlusIcon color="red" />
-            </div>
-          </div>
-        );
-      default:
-        return <span>{cellValue}</span>;
+import { Icolumn } from "../layout/ILayout";
+interface TableProp<T> {
+  emptyContent: React.ReactNode;
+  column: Icolumn<T>[];
+  fetchData: (
+    page: number,
+    limit: number
+  ) => Promise<{ items: T[]; totalItems: number; page: number; pageSize: number }>;
+  selection: "none" | "single" | "multiple";
+  pagination?: boolean;
+}
+const TableUiConfig = {
+  tableHeader: "border-b text-center",
+  table: "",
+  base: "justify-between",
+  tableCell: "text-center"
+};
+export const BTTable = <T,>({ pagination, column, emptyContent, fetchData, selection }: TableProp<T>) => {
+  const [selectedKeys, setSelectedKeys] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalItems, setTotalItems] = useState(0);
+  const [pageSize] = useState(4);
+  const renderCell = <T,>(row: T, columnKey: React.Key, columns: Icolumn<T>[]): React.ReactNode => {
+    const cellValue = row[columnKey as keyof T];
+    const column = columns.find((col) => col.key === columnKey);
+    if (column?.formatter) {
+      return column.formatter(cellValue, row);
     }
+    return <span>{cellValue as string}</span>;
   };
-  useEffect(() => {
-    fetchFakeRow().then((res) => {
-      setData(res);
-      setIsLoading(false);
-    });
-  }, []);
+
+  const list = useAsyncList({
+    async load({ signal }) {
+      const data = await fetchData(currentPage, pageSize); //note: Fix default 4
+      setTotalItems(data.totalItems);
+      return {
+        items: data.items
+      };
+    },
+    async sort({ items, sortDescriptor }) {
+      return {
+        items: items.sort((a, b) => {
+          let first = a[sortDescriptor.column];
+          let second = b[sortDescriptor.column];
+          let cmp = (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
+
+          if (sortDescriptor.direction === "descending") {
+            cmp *= -1;
+          }
+          return cmp;
+        })
+      };
+    }
+  });
   return (
-    <div className="bg-background">
+    <div className="bg-background w-full h-full pb-1">
       <Table
-        selectionMode="multiple"
+        selectionMode={selection}
         selectedKeys={selectedKeys}
-        onSelectionChange={setSelectedKeys}
+        sortDescriptor={list.sortDescriptor}
+        onSelectionChange={() => setSelectedKeys}
+        onSortChange={list.sort}
         classNames={{
-          th: "first:rounded-none last:rounded-none border-b border-t-0 text-center",
-          table: "border-separate  border-spacing-y-2 ",
-          base: "-mt-2",
-          td: "text-center"
+          th: `first:rounded-none last:rounded-none ${TableUiConfig["tableHeader"]}`,
+          table: `${TableUiConfig["table"]}`,
+          base: `${TableUiConfig["base"]}`,
+          td: `${TableUiConfig["tableCell"]}`
         }}
         removeWrapper
+        bottomContent={pagination || null}
       >
-        <TableHeader columns={columns}>
-          {(column) => (
-            <TableColumn className="min-w-20" key={column.key}>
-              {column.label}
-            </TableColumn>
-          )}
+        <TableHeader columns={column}>
+          {(column) => {
+            if (column.isFixed) {
+              return (
+                <TableColumn
+                  className="sticky left-0 z-10  bg-red-600"
+                  key={column.key}
+                  allowsSorting={column.allowSorting}
+                >
+                  {column.label}
+                </TableColumn>
+              );
+            }
+            return (
+              <TableColumn className="" key={column.key} allowsSorting={column.allowSorting}>
+                {column.label}
+              </TableColumn>
+            );
+          }}
         </TableHeader>
-        <TableBody emptyContent={"No rows to display."} isLoading={isLoading} items={data} className="border-spacing-4">
+        <TableBody emptyContent={emptyContent} items={list.items as T[]}>
           {(item) => (
             <TableRow key={item.key}>
-              {(columnKey) => <TableCell className="min-w-20 text-center">{renderCell(item, columnKey)}</TableCell>}
+              {(columnKey) => <TableCell className="">{renderCell(item, columnKey, column)}</TableCell>}
             </TableRow>
           )}
         </TableBody>
       </Table>
+      <div className="flex justify-center mt-4">
+        <Pagination
+          isCompact
+          showControls
+          showShadow
+          color="primary"
+          defaultValue={1}
+          total={Math.ceil(totalItems / pageSize)}
+          onChange={(page) => {
+            setCurrentPage(page);
+            list.loadMore();
+          }}
+          size="lg"
+        />
+      </div>
     </div>
   );
 };

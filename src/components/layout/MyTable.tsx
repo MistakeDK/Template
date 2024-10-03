@@ -1,12 +1,9 @@
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 
 export const MyTable = () => {
-  // const checkScroll=()={
-
-  // }
   return (
     <>
-      <div className=" p-1   ">
+      <div className=" p-1 overflow-x-auto">
         <Table
           classNames={{
             wrapper: " p-0 rounded-none ",
@@ -17,9 +14,9 @@ export const MyTable = () => {
           className="w-full"
         >
           <TableHeader>
-            <TableColumn className="sticky left-0 z-10 !rounded-none">Fixed Column</TableColumn>
-            <TableColumn>Column 2</TableColumn>
-            <TableColumn>Column 3</TableColumn>
+            <TableColumn className="sticky left-0 top-0 z-10  !rounded-none w-24">Fixed Column</TableColumn>
+            <TableColumn className="">Column 2</TableColumn>
+            <TableColumn className="">Column 3</TableColumn>
             <TableColumn>Column 4</TableColumn>
             <TableColumn>Column 4</TableColumn>
             <TableColumn>Column 4</TableColumn>

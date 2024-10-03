@@ -59,6 +59,12 @@ export interface row {
   Status: string;
   action?: string;
 }
+interface responsePagination<T> {
+  page: number;
+  pageSize: number;
+  totalItems: number;
+  items: T[];
+}
 const rows: row[] = [
   {
     key: "1",
@@ -93,7 +99,7 @@ const rows: row[] = [
     Type: "ONVIF",
     Username: "admin",
     Password: "12345678",
-    Support: "Yes",
+    Support: "NO",
     Status: "V"
   },
   {
@@ -108,12 +114,96 @@ const rows: row[] = [
     Support: "Yes",
     Status: "V",
     action: ""
+  },
+  {
+    key: "5",
+    STT: "5",
+    Camera: "Dahua",
+    IPAddress: "192.168.12.1.1.1.1",
+    Gate: "192.168.12.1.1.1.1",
+    Type: "ONVIF",
+    Username: "admin",
+    Password: "12345678",
+    Support: "Yes",
+    Status: "V",
+    action: ""
+  },
+  {
+    key: "6",
+    STT: "6",
+    Camera: "Dahua",
+    IPAddress: "192.168.12.1.1.1.1",
+    Gate: "192.168.12.1.1.1.1",
+    Type: "ONVIF",
+    Username: "admin",
+    Password: "12345678",
+    Support: "Yes",
+    Status: "V",
+    action: ""
+  },
+  {
+    key: "7",
+    STT: "7",
+    Camera: "Dahua",
+    IPAddress: "192.168.12.1.1.1.1",
+    Gate: "192.168.12.1.1.1.1",
+    Type: "ONVIF",
+    Username: "admin",
+    Password: "12345678",
+    Support: "Yes",
+    Status: "V",
+    action: ""
+  },
+  {
+    key: "8",
+    STT: "8",
+    Camera: "Dahua",
+    IPAddress: "192.168.12.1.1.1.1",
+    Gate: "192.168.12.1.1.1.1",
+    Type: "ONVIF",
+    Username: "admin",
+    Password: "12345678",
+    Support: "Yes",
+    Status: "V",
+    action: ""
+  },
+  {
+    key: "9",
+    STT: "9",
+    Camera: "Dahua",
+    IPAddress: "192.168.12.1.1.1.1",
+    Gate: "192.168.12.1.1.1.1",
+    Type: "ONVIF",
+    Username: "admin",
+    Password: "12345678",
+    Support: "Yes",
+    Status: "V",
+    action: ""
+  },
+  {
+    key: "10",
+    STT: "10",
+    Camera: "Dahua",
+    IPAddress: "192.168.12.1.1.1.1",
+    Gate: "192.168.12.1.1.1.1",
+    Type: "ONVIF",
+    Username: "admin",
+    Password: "12345678",
+    Support: "Yes",
+    Status: "V",
+    action: ""
   }
 ];
-export const fetchFakeRow = (): Promise<row[]> => {
+
+export const fetchFakeRow = (page, pageSize): Promise<responsePagination<row>> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(rows);
+      resolve({
+        items: rows.slice(page - 1, pageSize),
+        pageSize: pageSize,
+        page: page,
+        totalItems: rows.length
+      });
     }, 1000);
   });
 };

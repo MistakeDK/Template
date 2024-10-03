@@ -25,3 +25,10 @@ export interface tabWrapperState{
     title:string,
     key:string,
 }
+export interface Icolumn<T> {
+    key: string;
+    label: string;
+    formatter?: (value: any, row: T) => React.ReactNode;
+    isFixed?: boolean;
+    allowSorting?: boolean;
+}

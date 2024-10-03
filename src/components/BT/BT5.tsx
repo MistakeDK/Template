@@ -39,9 +39,9 @@ export const BT5 = ({ url }: Iimg) => {
 
   return (
     <React.Fragment>
-      <div className="ml-w mr-1 w-full h-full rounded-xl backdrop-blur-lg bg-[#2d375f99] border">
+      <div className="w-full h-full rounded-xl backdrop-blur-lg bg-[#2d375f99] border">
         <div className="w-full flex justify-center items-center">
-          <div className=" border-r-2 border-l-2 w-1/5 grid grid-flow-col grid-rows-2">
+          <div className=" w-1/5 grid grid-flow-col grid-rows-2">
             {arrIcon.map(() => {
               return (
                 <div>
@@ -51,9 +51,9 @@ export const BT5 = ({ url }: Iimg) => {
             })}
           </div>
         </div>
-        <div className="flex w-full space-x-2 ">
-          <div className="flex-col flex w-1/2 space-y-2">
-            <div className="w-full  overflow-hidden relative">
+        <div className="flex w-full">
+          <div className="flex-col flex w-1/2 ">
+            <div className="w-full h-1/2 overflow-hidden relative">
               <button onClick={handlePre} className="top-1/2 left-0 absolute z-20">
                 <ArrowLeftIcon size={20} />
               </button>
@@ -78,10 +78,9 @@ export const BT5 = ({ url }: Iimg) => {
                 ></img>
               )}
             </div>
-
-            <div className="overflow-scroll  grid grid-rows-2 grid-flow-col place-items-center gap-4 scrollbar w-full scrollbar-horizontal scrollbar-vertical">
+            <div className="overflow-scroll h-1/2 grid grid-rows-2 grid-flow-col place-items-center gap-4 scrollbar w-full scrollbar-horizontal scrollbar-vertical">
               {arrIcon.map(() => {
-                return <div className="w-20 h-20 bg-gray-700"></div>;
+                return <div className=" bg-gray-700"></div>;
               })}
             </div>
           </div>
